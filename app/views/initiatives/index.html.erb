@@ -1,0 +1,6 @@
+<h1>A VIENTO EN POPA</h1>
+<% @initiatives.each do |initiative|%>
+  <%= link_to initiative_path(initiative) do %>
+    <h1><%= initiative.name %></h1>
+  <% end %>
+<%end%>

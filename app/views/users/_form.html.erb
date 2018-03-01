@@ -1,0 +1,19 @@
+
+<%= form_for user do |f| %>
+  <h3>Nombre</h3>
+  <br>
+  <%=f.text_field :fname %>
+  <br>
+  <h3>Apellido</h3>
+  <br>
+  <%=f.text_field :lname %>
+  <br>
+  <h3>E-Mail</h3>
+  <br>
+  <%=f.text_field :email%>
+  <br>
+  <h3>Edad</h3>
+  <br>
+  <%= f.text_field :age%>
+  <%= f.submit %>
+<% end %>
