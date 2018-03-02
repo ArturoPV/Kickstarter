@@ -1,1 +1,3 @@
-<h1><%=Initiative.name%></h1>
+<h1><%=@initiative.name%></h1>
+<p><%=@initiative.description%></p>
+<%=link_to "Editar", edit_initiative_path(@initiative)%>
