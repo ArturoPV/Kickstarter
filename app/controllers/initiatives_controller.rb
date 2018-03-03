@@ -2,9 +2,11 @@ class InitiativesController < ApplicationController
   def index
     @initiatives = Initiative.all
   end
+
   def new
     @initiative = Initiative.new
   end
+
   def create
     initiative = Initiative.new(params.require(:initiative).permit(:name, :description, :deadline))
     if initiative.save
@@ -13,12 +15,15 @@ class InitiativesController < ApplicationController
       render 'new'
     end
   end
+
   def show
     @initiative = Initiative.find(params[:id])
   end
+
   def edit
     @initiative = Initiative.find(params[:id])
   end
+  
   def update
     initiative = Initiative.find(params[:id])
     if initiative.update(params.require(:initiative).permit(:name, :description, :deadline))

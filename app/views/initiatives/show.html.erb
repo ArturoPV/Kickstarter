@@ -1,3 +1,6 @@
 <h1><%=@initiative.name%></h1>
 <p><%=@initiative.description%></p>
+<%if logged_in? %>
+    <%=link_to "Unete!", volunteers_path(@initiative), method: :post%> 
+<%end%>
 <%=link_to "Editar", edit_initiative_path(@initiative)%>
