@@ -1,0 +1,7 @@
+<h1><%= "#{@user.fname} #{@user.lname}" %></h1>
+<h2> Iniciativas </h2>
+<ul>
+  <% @user.initiatives.each do |initiative| %>
+  <li><%= link_to "#{initiative.name}",  initiative_path(initiative.id) %></li>
+  <% end %>
+</ul>

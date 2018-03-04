@@ -1,5 +1,8 @@
 <h1>Iniciativas</h1>
+
+<% if logged_in? %>
 <%= link_to "Crear una iniciativa nueva", new_initiative_path%>
+<% end %>
 
 <% @initiatives.each do |initiative|%>
   <%= link_to initiative_path(initiative) do %>

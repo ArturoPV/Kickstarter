@@ -5,7 +5,7 @@
 <% if logged_in? && !current_user.has_joined?(@initiative) %>
   <%= link_to "Unete!", volunteer_initiatives_path({initiative_id: @initiative.id}), method: :post %>
 <% elsif logged_in? && current_user.has_joined?(@initiative)  %>
-  <%= link_to "Salir de iniciativa", volunteer_initiatives_path({initiative_id: @initiative.id}), method: :delete %>
+  <%= link_to "Salir de iniciativa", volunteer_initiatives_path({initiative_id: @initiative.id}), method: :delete  %>
 <% end %>
 
 <%= link_to "Editar", edit_initiative_path(@initiative) %>

@@ -1,11 +1,12 @@
 <h1>SÍ PODREMOS LOGRARLO</h1>
 
 <% User.all.each do |u| %>
-
-  <%=u.fname%>
-  <%=u.lname%>
-  <%=u.email%>
-  <%=u.age%>
-<%=link_to "Editar", edit_user_path(u)%>
+<%= link_to user_path(u) do %>
+  <%= u.fname %>
+  <%= u.lname %>
+<% end %>
+<%= u.email %>
+<%= u.age %>
+<%= link_to "Editar", edit_user_path(u) %>
   <br>
 <%end%>

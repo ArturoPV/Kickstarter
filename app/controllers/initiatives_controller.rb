@@ -8,7 +8,11 @@ class InitiativesController < ApplicationController
   end
 
   def create
-    initiative = Initiative.new(params.require(:initiative).permit(:name, :description, :deadline))
+    binding.pry 
+    initiative = Initiative.new(params.require(:initiative).permit(:name, :description, :deadline, :user_id)) do
+      user_id = current_user.id
+
+    end
     if initiative.save
       redirect_to initiatives_path
     else
@@ -23,7 +27,7 @@ class InitiativesController < ApplicationController
   def edit
     @initiative = Initiative.find(params[:id])
   end
-  
+
   def update
     initiative = Initiative.find(params[:id])
     if initiative.update(params.require(:initiative).permit(:name, :description, :deadline))
