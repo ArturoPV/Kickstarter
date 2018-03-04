@@ -7,6 +7,9 @@
   </button>
   <div class="navbar-collapse collapse justify-content-stretch" id="navbar7">
     <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <%= link_to "Iniciativas", initiatives_path, { class: "nav-link"} %>
+      </li>
       <% if logged_in? %>
         <li class="nav-item">
           <%= link_to "Cerrar Sesión", logout_path, { class: "nav-link"} %>

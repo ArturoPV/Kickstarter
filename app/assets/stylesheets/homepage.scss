@@ -1,3 +1,39 @@
 .logo {
   vertical-align: baseline;
 }
+.create_initiative {
+  background-image: url('create_initiative');
+  background-size: cover;
+  background-position: center center;
+  height: 100%;
+  width: 100%;
+
+
+  h2 {
+    font-size: 56px;
+    line-height: 56px;
+    color: #fff;
+    font-weight: 700;
+    text-transform: uppercase;
+    cursor: default;
+  }
+}
+.join_initiative {
+  background-image: url('join_initiative');
+  background-size: cover;
+  background-position: center center;
+  height: 100%;
+  width: 100%;
+
+  h2 {
+    font-size: 56px;
+    line-height: 56px;
+    color: #fff;
+    font-weight: 700;
+    text-transform: uppercase;
+    cursor: default;
+  }
+}
+.hero_container {
+  height: 490px
+}
