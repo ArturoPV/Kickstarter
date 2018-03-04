@@ -2,10 +2,18 @@
 
 <p><%= @initiative.description %></p>
 
-<% if logged_in? && !current_user.has_joined?(@initiative) %>
-  <%= link_to "Unete!", volunteer_initiatives_path({initiative_id: @initiative.id}), method: :post %>
-<% elsif logged_in? && current_user.has_joined?(@initiative)  %>
-  <%= link_to "Salir de iniciativa", volunteer_initiatives_path({initiative_id: @initiative.id}), method: :delete  %>
+<% if logged_in? %>
+  <% if current_user.has_joined?(@initiative) %>
+    <%= link_to "Salir de iniciativa", volunteer_initiatives_path({initiative_id: @initiative.id}), method: :delete  %>
+  <% else %>
+    <%= link_to "Unete!", volunteer_initiatives_path({initiative_id: @initiative.id}), method: :post %>
+  <% end %>
+<% end %>
+
+<% if @initiative.has_volunteers? %>
+  <h4><%= "Hay #{@initiative.volunteersjoined} voluntarios" %></h4>
+<% else %>
+  <h4>No hay voluntarios para esta iniciativa todavia</h4>
 <% end %>
 
 <%= link_to "Editar", edit_initiative_path(@initiative) %>
