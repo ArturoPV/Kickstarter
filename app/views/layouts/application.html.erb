@@ -9,38 +9,7 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-light navbar-expand-md  bg-light container">
-      <%= link_to "Pichón", root_path, { class: "navbar-brand" } %>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar7">
-          <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="navbar-collapse collapse justify-content-stretch" id="navbar7">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <%= link_to "Crear Cuenta", new_user_path, { class: "nav-link"} %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "Ingresa", login_path, { class: "nav-link"} %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "Cerrar Sesión", logout_path, { class: "nav-link"} %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "#{current_user.fname} #{current_user.lname}", user_path(current_user), { class: "nav-link"} %>
-          </li>
-        </ul>
-      </div>
-    </nav>
-
-    <% if logged_in? %>
-
-      <span>Ingresado como: </span>
-      <span><%= link_to" #{current_user.fname} #{current_user.lname}", user_path(current_user.id) %></span>
-      <p><%= link_to "Logout", logout_path%></p>
-    <% else %>
-  <p>  <%= link_to "Crea un usuario", new_user_path%> o  <%= link_to "ingresa!", login_path%> </p>
-    <%end%>
-
+    <%= render 'layouts/navbar' %>
     <%= yield %>
   </body>
 </html>
