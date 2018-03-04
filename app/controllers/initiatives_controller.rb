@@ -8,12 +8,9 @@ class InitiativesController < ApplicationController
   end
 
   def create
-    binding.pry 
-    initiative = Initiative.new(params.require(:initiative).permit(:name, :description, :deadline, :user_id)) do
-      user_id = current_user.id
+    @initiative = current_user.initiatives.build(initiative_params)
 
-    end
-    if initiative.save
+    if @initiative.save
       redirect_to initiatives_path
     else
       render 'new'
@@ -29,12 +26,18 @@ class InitiativesController < ApplicationController
   end
 
   def update
-    initiative = Initiative.find(params[:id])
-    if initiative.update(params.require(:initiative).permit(:name, :description, :deadline))
+    @initiative = Initiative.find(params[:id])
+
+    if @initiative.update(initiative_params)
       redirect_to initiative_path
     else
       render 'edit'
     end
+  end
 
+  private
+
+  def initiative_params
+    params.require(:initiative).permit(:name, :description, :deadline)
   end
 end
