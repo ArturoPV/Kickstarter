@@ -1,8 +1,36 @@
 <div class="row hero_container">
   <div class="col-sm join_initiative container d-flex justify-content-center">
-    <h2 class="row align-items-center">ÚNETE A UNA INICIATIVA</h2>
+    <div class="row align-items-center">
+      <%= link_to initiatives_path do %>
+        <h2>UNETE A UNA INICIATIVA</h2>
+      <% end %>
+    </div>
   </div>
   <div class="col-sm create_initiative container d-flex justify-content-center">
-    <h2 class="row align-items-center">CREA UNA INICIATIVA</h2>
+    <div class="row align-items-center">
+      <%= link_to new_initiative_path do %>
+        <h2>CREA UNA INICIATIVA</h2>
+      <% end %>
+    </div>
+  </div>
+</div>
+<br>
+<br>
+<div class="container text-center">
+  <div class="row">
+    <div class="col">
+      <div class="row">
+        <%= image_tag "create_initiative", width:255, height:173 %>
+      </div>
+      <div class="row align-items-center">
+        <h4>Lorem Ipsu</h4>
+      </div>
+      <div class="padding-column">
+        <div class="row">asdlkj aslk asldkn</div>
+        <div class="row">askjclak alskj lask cl aslkc l lcka slck aslk l slkc als clk alsc lkasjclak slckas claks claks </div>
+        <div class="row">Fecha tope: 15/02/18 </div>
+        <div class="row">Voluntarios: 64 </div>
+      </div>
+    </div>
   </div>
 </div>
