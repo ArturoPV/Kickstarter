@@ -9,16 +9,7 @@
   </head>
 
   <body>
-
-    <% if logged_in? %>
-
-      <span>Ingresado como: </span>
-      <span><%= link_to" #{current_user.fname} #{current_user.lname}", user_path(current_user.id) %></span>
-      <p><%= link_to "Logout", logout_path%></p>
-    <% else %>
-  <p>  <%= link_to "Crea un usuario", new_user_path%> o  <%= link_to "ingresa!", login_path%> </p>
-    <%end%>
-
+    <%= render 'layouts/navbar' %>
     <%= yield %>
   </body>
 </html>

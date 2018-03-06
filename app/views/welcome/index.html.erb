@@ -1,4 +1,37 @@
-<h1>Index</h1>
-<%=link_to "Usuarios",  users_path%>
+<div class="row hero_container">
+  <div class="col-sm-6 join_initiative container d-flex justify-content-center fade">
+    <div class="row align-items-center">
+      <%= link_to initiatives_path do %>
+        <h2>ÚNETE A UNA INICIATIVA</h2>
+
+      <% end %>
+    </div>
+  </div>
+  <div class="col-sm-6 create_initiative container d-flex justify-content-center fade">
+    <div class="row align-items-center">
+      <%= link_to new_initiative_path do %>
+        <h2>CREA UNA INICIATIVA</h2>
+      <% end %>
+    </div>
+  </div>
+</div>
 <br>
-<%=link_to "Iniciativas", initiatives_path%>
+<br>
+<div class="container">
+  <div class="row">
+    <% @initiatives.each do |i| %>
+      <div class="col-sm-3">
+        <%= link_to initiative_path(i) do %>
+          <%= image_tag "icono_#{rand(1..7)}", class: "img-thumbnail" %>
+          <div class="padding">
+            <h5 style="color: #000000" class="title"><b><%= i.name.titleize %></b></h5>
+        <% end %>
+            <p style="color: grey">Etiquetas</p>
+            <p><%= i.description %></p>
+            <p><%= "Fecha tope: #{i.deadline}"%></p>
+            <p><%= "Voluntarios: #{i.volunteersjoined}"%></p>
+          </div>
+      </div>
+    <% end %>
+  </div>
+</div>
