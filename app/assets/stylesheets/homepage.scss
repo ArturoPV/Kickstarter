@@ -1,12 +1,31 @@
 .logo {
   vertical-align: baseline;
 }
+.fade
+{
+        opacity:0.5;
+}
+.fade:hover
+{
+        opacity:1;
+}
 .create_initiative {
   background-image: url('create_initiative');
   background-size: cover;
   background-position: center center;
   height: 100%;
   width: 100%;
+
+  .button{
+    color: #ffffff !important;
+    font-weight: 700;
+    background-color: #1b1b1b;
+    border-radius: 5px;
+    display: inline-block;
+    text-align: center;
+    -webkit-transition: all 100ms linear !important;
+    transition: all 100ms linear !important;
+  }
 
 
   h2 {
@@ -16,8 +35,8 @@
     font-weight: 700;
     text-transform: uppercase;
     cursor: default;
-    filter: drop-shadow;
   }
+
 }
 .join_initiative {
   background-image: url('join_initiative');
@@ -37,4 +56,22 @@
 }
 .hero_container {
   height: 490px
+}
+
+.padding{
+  padding: 0 30px 40px;
+  word-wrap: break-word;
+}
+
+.title{
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 700;
+  margin: 35px 0 15px;
+  color: #1b1b1b;
+  text-transform: none;
+}
+
+a:-webkit-any-link{
+text-decoration:none !important;
 }

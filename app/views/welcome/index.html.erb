@@ -1,12 +1,13 @@
 <div class="row hero_container">
-  <div class="col-sm join_initiative container d-flex justify-content-center">
+  <div class="col-sm-6 join_initiative container d-flex justify-content-center fade">
     <div class="row align-items-center">
       <%= link_to initiatives_path do %>
-        <h2>UNETE A UNA INICIATIVA</h2>
+        <h2>ÚNETE A UNA INICIATIVA</h2>
+
       <% end %>
     </div>
   </div>
-  <div class="col-sm create_initiative container d-flex justify-content-center">
+  <div class="col-sm-6 create_initiative container d-flex justify-content-center fade">
     <div class="row align-items-center">
       <%= link_to new_initiative_path do %>
         <h2>CREA UNA INICIATIVA</h2>
@@ -16,21 +17,21 @@
 </div>
 <br>
 <br>
-<div class="container text-center">
+<div class="container">
   <div class="row">
-    <div class="col">
-      <div class="row">
-        <%= image_tag "create_initiative", width:255, height:173 %>
+    <% @initiatives.each do |i| %>
+      <div class="col-sm-3">
+        <%= link_to initiative_path(i) do %>
+          <%= image_tag "icono_#{rand(1..7)}", class: "img-thumbnail" %>
+          <div class="padding">
+            <h5 style="color: #000000" class="title"><b><%= i.name.titleize %></b></h5>
+        <% end %>
+            <p style="color: grey">Etiquetas</p>
+            <p><%= i.description %></p>
+            <p><%= "Fecha tope: #{i.deadline}"%></p>
+            <p><%= "Voluntarios: #{i.volunteersjoined}"%></p>
+          </div>
       </div>
-      <div class="row align-items-center">
-        <h4>Lorem Ipsu</h4>
-      </div>
-      <div class="padding-column">
-        <div class="row">asdlkj aslk asldkn</div>
-        <div class="row">askjclak alskj lask cl aslkc l lcka slck aslk l slkc als clk alsc lkasjclak slckas claks claks </div>
-        <div class="row">Fecha tope: 15/02/18 </div>
-        <div class="row">Voluntarios: 64 </div>
-      </div>
-    </div>
+    <% end %>
   </div>
 </div>

@@ -8,12 +8,18 @@
   <% else %>
     <%= link_to "Unete!", volunteer_initiatives_path({initiative_id: @initiative.id}), method: :post %>
   <% end %>
-<% end %>
-
-<% if @initiative.has_volunteers? %>
-  <h4><%= "Hay #{@initiative.volunteersjoined} voluntarios" %></h4>
+  <% if current_user.id == @initiative.user_id %>
+    <%= link_to "Editar", edit_initiative_path(@initiative) %>
+  <% end %>
+  <% if @initiative.has_volunteers? %>
+    <h4><%= "Hay #{@initiative.volunteersjoined} voluntarios" %></h4>
+  <% else %>
+    <h4>No hay voluntarios para esta iniciativa todavia</h4>
+  <% end %> 
 <% else %>
-  <h4>No hay voluntarios para esta iniciativa todavia</h4>
+  <% if @initiative.has_volunteers? %>
+    <h4><%= "Hay #{@initiative.volunteersjoined} voluntarios" %></h4>
+  <% else %>
+    <h4>No hay voluntarios para esta iniciativa todavia</h4>
+  <% end %>
 <% end %>
-
-<%= link_to "Editar", edit_initiative_path(@initiative) %>
