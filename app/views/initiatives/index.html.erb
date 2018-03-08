@@ -1,11 +1,46 @@
-<h1>Iniciativas</h1>
 
-<% if logged_in? %>
-<%= link_to "Crear una iniciativa nueva", new_initiative_path%>
-<% end %>
+<div class="content">
+  <div class="index">
+    <h1>
+      Iniciativas
+      <% if logged_in? %>
+        <%= link_to new_initiative_path do %>
+          <button type="button" class="btn btn-outline-warning btn-lrg", style="float: right">Crear Iniciativa</button>
+        <% end %>
+      <% end %>
 
-<% @initiatives.each do |initiative|%>
-  <%= link_to initiative_path(initiative) do %>
-    <h1><%= initiative.name %></h1>
-  <% end %>
-<%end%>
+    </h1>
+  </div>
+  <div class="container" style="width: 95%">
+    <div class="row">
+      <% @initiatives.each do |i| %>
+        <div class="col-sm-4 make-it-slow card">
+          <%= link_to initiative_path(i) do %>
+            <%= image_tag "icono_#{rand(1..7)}", class: "img-thumbnail" %>
+            <div class="padding">
+              <h5 style="color: #000000" class="title"><b><%= i.name.titleize %></b></h5>
+          <% end %>
+              <p style="color: grey">Descripción</p>
+              <p class="description"><%= truncate(i.description, length: 100) %></p>
+              <p><%= "Voluntarios: #{i.volunteersjoined}"%></p>
+              <p><%= "Fecha tope: #{i.deadline}"%></p>
+            <div class="progress-bar amarillo" role="progressbar"
+              aria-valuenow="<%i.deadline.to_datetime.to_i - Time.zone.now.to_i%>"
+              aria-valuemin="0"
+              aria-valuemax="<%=i.deadline.to_datetime.to_i - i.created_at.to_i%>"
+              style="width:<%=(i.deadline.to_datetime.to_i - Time.zone.now.to_i)*100/(Time.zone.now.to_i - i.created_at.to_i)%>%">
+              <%="#{i.deadline - Date.today}"%>
+            </div>
+            <p>Fecha tope: <%=i.deadline.to_datetime.to_i%></p>
+            <p>Fecha Creacion: <%=i.created_at.to_i%></p>
+            <p>Hora actual: <%=Time.zone.now.to_i%></p>
+
+            <p>Tiempo Faltante: <%= (Time.zone.now.to_i * 100 / i.deadline.to_datetime.to_i) %></p>
+            /
+            <%= DateTime.strptime("1318996912",'%s') %>
+            </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
