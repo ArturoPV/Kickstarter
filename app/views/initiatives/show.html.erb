@@ -28,29 +28,33 @@
 
 
                 <% if logged_in? %>
-                  <% if current_user.has_joined?(@initiative) %>
-                    <%= link_to volunteer_initiatives_path({initiative_id: @initiative.id}), method: :delete do %>
+                  <% if current_user.id == @initiative.user_id %>
+                    <%= link_to edit_initiative_path(@initiative) do %>
                       <button type="button" class="btn btn-outline-secondary" style="padding: 25px;
                         width: 100%;
-                        font-size: 28px;">Salir de la iniciativa
+                        font-size: 28px;">Editar  
                       </button>
-                    <% end %>
+                  <% end %>
+                  <% elsif current_user.has_joined?(@initiative) %>
+                      <%= link_to volunteer_initiatives_path({initiative_id: @initiative.id}), method: :delete do %>
+                        <button type="button" class="btn btn-outline-secondary" style="padding: 25px;
+                          width: 100%;
+                          font-size: 28px;">Salir de la iniciativa
+                        </button>
+                      <% end %>
                   <% else %>
-                    <%= link_to volunteer_initiatives_path({initiative_id: @initiative.id}), method: :post do %>
-                      <button type="button" class="btn btn-outline-warning" style="padding: 25px;
-                        width: 100%;
-                        font-size: 28px;">Únete a la iniciativa!
-                      </button>
-                    <% end %>
+                      <%= link_to volunteer_initiatives_path({initiative_id: @initiative.id}), method: :post do %>
+                        <button type="button" class="btn btn-outline-warning" style="padding: 25px;
+                          width: 100%;
+                          font-size: 28px;">Únete a la iniciativa!
+                        </button>
+                      <% end %>
                     <% end %>
                 <% else %>
                   <button type="button" class="btn btn-outline-warning" style="padding: 25px;
                     width: 100%;
                     font-size: 28px;">Registrate!
                   </button>
-                <% end %>
-                  <% if current_user.id == @initiative.user_id %>
-                      <%= link_to "Editar", edit_initiative_path(@initiative) %>
                 <% end %>
             </div>
           </div>
@@ -91,25 +95,8 @@
 
 
 
-
-<% if logged_in? %>
-
-    <%= link_to "Salir de iniciativa", volunteer_initiatives_path({initiative_id: @initiative.id}), method: :delete  %>
-
-    <%= link_to "Unete!", volunteer_initiatives_path({initiative_id: @initiative.id}), method: :post %>
-  <% end %>
-  <% if current_user.id == @initiative.user_id %>
-    <%= link_to "Editar", edit_initiative_path(@initiative) %>
-  <% end %>
   <% if @initiative.has_volunteers? %>
     <h4><%= "Hay #{@initiative.volunteersjoined} voluntarios" %></h4>
   <% else %>
     <h4>No hay voluntarios para esta iniciativa todavia</h4>
   <% end %>
-<% else %>
-  <% if @initiative.has_volunteers? %>
-    <h4><%= "Hay #{@initiative.volunteersjoined} voluntarios" %></h4>
-  <% else %>
-    <h4>No hay voluntarios para esta iniciativa todavia</h4>
-  <% end %>
-<% end %>
