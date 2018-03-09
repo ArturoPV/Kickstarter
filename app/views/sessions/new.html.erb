@@ -1,7 +1,33 @@
+<div class="container" style="width: 26%; margin-top: 5%;">
 <%= form_tag 'login' do %>
-  <%= label_tag :email  %>
-  <%= text_field_tag :email  %>
-  <%= label_tag :contraseña  %>
-  <%= password_field_tag :password  %>
-  <%= submit_tag 'Login', class: 'btn btn-success'%>
+	<h2 class="texto-centrado">Ingresar a Pichón</h2>
+  <div class="form-group">
+    <label for="nombre">Email:</label>
+    <%= text_field_tag :email, style: 'width: 100%' %>
+  </div>
+
+  <div class="form-group">
+    <label for="nombre">Clave:</label>
+    <%= password_field_tag :password, style: 'width: 100%' %>
+  </div>
+
+  <%= submit_tag 'Acceder', class: 'boton-pretty'%>
 <% end %>
+</div>
+
+<style type="text/css">
+
+	.boton-pretty{
+		background: linear-gradient(to bottom,#dc3545,#f0c14b);
+		width: 100%;
+	}
+
+	.texto-centrado{
+		text-align: center;
+	}
+
+	input[type] {
+	    width: 100%;
+	}
+
+</style>
