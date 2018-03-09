@@ -16,7 +16,7 @@
       <% @initiatives.each do |i| %>
         <div class="col-sm-4 make-it-slow card">
           <%= link_to initiative_path(i) do %>
-            <%= image_tag "icono_#{rand(1..7)}", class: "img-thumbnail" %>
+            <%= image_tag initiative_asset_path, class: "img-thumbnail" %>
             <div class="padding">
               <h5 style="color: #000000" class="title"><b><%= i.name.titleize %></b></h5>
           <% end %>
@@ -26,7 +26,7 @@
               <p><%= "Fecha tope: #{i.deadline}"%></p>
               <% if i.deadline < Date.today %>
                 <div class="progress-bar gris" role="progressbar"
-                  aria-valuenow="100"
+                  aria-value  now="100"
                   aria-valuemin="0"
                   aria-valuemax="100"
                   style="width:100%">
