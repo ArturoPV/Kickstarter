@@ -9,7 +9,7 @@
     <% @initiatives.each do |i| %>
       <div class="col-sm-3 make-it-slow">
         <%= link_to initiative_path(i) do %>
-          <%= image_tag "icono_#{rand(1..7)}", class: "img-thumbnail" %>
+          <%= image_tag image_path, class: "img-thumbnail" %>
           <div class="padding">
             <h5 style="color: #000000" class="title"><b><%= i.name.titleize %></b></h5>
         <% end %>

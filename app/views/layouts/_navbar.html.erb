@@ -1,6 +1,7 @@
 <nav class="navbar navbar-light navbar-expand-md  bg-white container">
   <%= link_to root_path, { class: "navbar-brand" } do %>
-    <%= image_tag("pichon", width: "117", height: "37", class: "logo") %>
+    <% pichon_image_path = asset_path("pichon") %>
+    <%= image_tag(pichon_image_path, width: "117", height: "37", class: "logo") %>
   <% end %>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar7">
       <span class="navbar-toggler-icon"></span>
