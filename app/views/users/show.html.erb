@@ -1,7 +1,62 @@
-<h1><%= "#{@user.fname} #{@user.lname}" %></h1>
-<h2> Iniciativas </h2>
-<ul>
-  <% @user.joined_initiatives.each do |initiative| %>
-  <li><%= link_to "#{initiative.name}",  initiative_path(initiative.id) %></li>
-  <% end %>
-</ul>
+
+
+<div class="container" style="width: 95%">
+  <h1><%= "#{@user.fname} #{@user.lname}" %></h1>
+  <ul class="nav nav-tabs">
+  <li class="active"><a data-toggle="tab" href="#home">Iniciativas creadas</a></li>
+  <li><a data-toggle="tab" href="#menu1">Iniciativas unidas</a></li>
+  <div class="tab-content">
+
+    <div id="home" class="tab-pane in active">
+      <div class="row">
+        <h2> Iniciativas Creadas</h2>
+      </div>
+      <div class="row">
+        <% @user.initiatives.each do |initiative| %>
+          <div class="col-sm-4 make-it-slow card">
+            <%= link_to initiative_path(initiative) do %>
+              <%= image_tag initiative_asset_path, class: "img-thumbnail" %>
+            <% end %>
+            <div class="padding">
+              <h5 style="color: #000000" class="title"><b><%= initiative.name.titleize %></b></h5>
+              <p style="color: grey">Descripción</p>
+              <p class="description"><%= truncate(initiative.description, length: 100) %></p>
+              <p><%= "Voluntarios: #{initiative.volunteersjoined}"%></p>
+              <p><%= "Fecha tope: #{initiative.deadline}"%></p>
+              <% if initiative.deadline < Date.today %>
+                <%= render "progress_bar", state: "Finalizada", progress_class: "gris" %>
+              <% else %>
+                <%= render "progress_bar", state: "En progreso", progress_class: "amarillo" %>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+      <div id="menu1" class="tab-pane fade">
+        <div class="row">
+          <h2> Iniciativas Unidas</h2>
+        </div>
+        <div class="row">
+          <% @user.joined_initiatives.each do |initiative| %>
+            <div class="col-sm-4 make-it-slow card">
+              <%= link_to initiative_path(initiative) do %>
+                <%= image_tag initiative_asset_path, class: "img-thumbnail" %>
+              <% end %>
+              <div class="padding">
+                <h5 style="color: #000000" class="title"><b><%= initiative.name.titleize %></b></h5>
+                <p style="color: grey">Descripción</p>
+                <p class="description"><%= truncate(initiative.description, length: 100) %></p>
+                <p><%= "Voluntarios: #{initiative.volunteersjoined}"%></p>
+                <p><%= "Fecha tope: #{initiative.deadline}"%></p>
+                <% if initiative.deadline < Date.today %>
+                  <%= render "progress_bar", state: "Finalizada", progress_class: "gris" %>
+                <% else %>
+                  <%= render "progress_bar", state: "En progreso", progress_class: "amarillo" %>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+  </div>
+</div>

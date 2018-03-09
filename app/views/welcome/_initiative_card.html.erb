@@ -1,0 +1,17 @@
+<div class="col-sm-4 make-it-slow card">
+  <%= link_to initiative_path(initiative) do %>
+    <%= image_tag initiative_asset_path, class: "img-thumbnail" %>
+  <% end %>
+  <div class="padding">
+    <h5 style="color: #000000" class="title"><b><%= initiative.name.titleize %></b></h5>
+    <p style="color: grey">Descripción</p>
+    <p class="description"><%= truncate(initiative.description, length: 100) %></p>
+    <p><%= "Voluntarios: #{initiative.volunteersjoined}"%></p>
+    <p><%= "Fecha tope: #{initiative.deadline}"%></p>
+    <% if initiative.deadline < Date.today %>
+      <%= render "progress_bar", state: "Finalizada", progress_class: "gris" %>
+    <% else %>
+      <%= render "progress_bar", state: "En progreso", progress_class: "amarillo" %>
+    <% end %>
+  </div>
+</div>

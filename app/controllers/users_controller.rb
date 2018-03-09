@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   def create
     user = User.new(params.require(:user).permit(:fname, :lname, :age, :email, :password))
     user.save
-    redirect_to users_path
+    redirect_to initiatives_path
   end
 
   def edit
@@ -19,7 +19,7 @@ class UsersController < ApplicationController
   def update
     user = User.find(params[:id])
     user.update(params.require(:user).permit(:fname, :lname, :age, :email))
-    redirect_to users_path
+    redirect_to initiatives_path
   end
 
   def show
